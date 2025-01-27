@@ -4,6 +4,19 @@
 // Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
 // O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
 
+void MovimentaPeca(int movimentos, char descricaoMovimento[], char descricaoFinal[])
+{
+    if (movimentos > 0)
+    {
+        printf("%s\n", descricaoMovimento);
+        MovimentaPeca(movimentos - 1, descricaoMovimento, descricaoFinal);
+    }
+    else
+    {
+        printf("%s\n", descricaoFinal);
+    }
+}
+
 int main()
 {
     // Nível Novato - Movimentação das Peças
@@ -48,7 +61,7 @@ int main()
     // Um loop pode representar a movimentação horizontal e outro vertical.
     printf("\n***** Nível Aventureiro ***** \n");
     int movimentoCavalo = 0;
-    
+
     printf("\nMovendo Cavalo\n");
     while (movimentoCavalo < 1)
     {
@@ -63,12 +76,37 @@ int main()
 
     printf("\n***** Final Nível Aventureiro ***** \n");
 
+    printf("\n***** Nível Mestre ***** \n");
     // Nível Mestre - Funções Recursivas e Loops Aninhados
     // Sugestão: Substitua as movimentações das peças por funções recursivas.
     // Exemplo: Crie uma função recursiva para o movimento do Bispo.
+    printf("Movendo Bispo Recursivo\n");
+    MovimentaPeca(movimentoBispo, "Direita, Cima", "");
+
+    printf("Movendo Torre Recursivo\n");
+    MovimentaPeca(movimentoTorre, "Direita", "");
+
+    printf("Movendo Rainha Recursivo\n");
+    MovimentaPeca(movimentoRainha, "Esqueda", "");
+
+    printf("Movendo Cavalo Recursivo\n");
+    MovimentaPeca(3, "Cima", "Direita");
 
     // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
     // Inclua o uso de continue e break dentro dos loops.
+    printf("\nMovendo Cavalo For\n");
+    for (int mov1 = 0, mov2 = 4; mov1 < 4 && mov2 > 0; mov1++, mov2--)
+    {
+        if (mov1 < 3)
+        {
+            printf("Cima\n");
+            continue;
+        }
 
+        printf("Esquerda\n");
+        break;
+    }
+
+    printf("\n***** Final Nível Mestre ***** \n");
     return 0;
 }
